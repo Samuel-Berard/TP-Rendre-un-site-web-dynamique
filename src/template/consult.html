@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>Détails du produit</title>
 </head>
 <body>
     <header>
         <img src="/static/img/logo/2.png" alt="Image du logo StreetShop">
         <nav class="nav">
-            <a href="#home">Home</a>
+            <a href="/">Home</a>
             <a href="#add">Add</a>
         </nav>
     </header>
@@ -18,16 +19,19 @@
         <h1>Détails du produit</h1>
         <div class="produit-detail">
             <img src="{{.Img}}" alt="{{.Name}}">
-            <h2>{{.Name}}</h2>
-            <div class="prices">
-                {{if .OldPrice}}
-                    <div class="old-price">{{.OldPrice}}€</div>
-                {{end}}
-                <div class="price">{{.Price}}€</div>
+            <div class="info">
+                <h2>{{.Name}}</h2>
+                <p class="desc">{{.Description}}</p>
+                <div class="prices">
+                    {{if .OldPrice}}
+                        <span class="old-price">{{.OldPrice}}€</span>
+                    {{end}}
+                    <span class="price">{{.Price}}€</span>
+                </div>
+                <p class="stock">Stock: {{.Stock}}</p>
+                <button class="Ajouter">Ajouter au panier</button>
             </div>
-            <p>Description du produit à venir...</p>
         </div>
-
     </main>
 </body>
 </html>
