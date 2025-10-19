@@ -124,6 +124,56 @@ func main() {
 		temp.ExecuteTemplate(w, "consult", prod)
 	})
 
+	http.HandleFunc("/add", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == http.MethodGet {
+			temp.ExecuteTemplate(w, "add", nil)
+			return
+		}
+		if r.Method == http.MethodPost {
+			if err := r.ParseForm(); err != nil {
+				http.Error(w, "Oh nonnnn erreur de formulaire t'abuse", http.StatusBadRequest)
+				return
+			}
+			name := r.FormValue("name")
+			desc := r.FormValue("description")
+			price := r.FormValue("price")
+			oldPrice := r.FormValue("old_price")
+			stockStr := r.FormValue("stock")
+			img := r.FormValue("img")
+			if name == "" || desc == "" || price == "" || stockStr == "" {
+				http.Error(w, "EH OH, Champs obligatoires manquants", http.StatusBadRequest)
+				return
+			}
+			stock, err := strconv.Atoi(stockStr)
+			if err != nil || stock < 0 {
+				http.Error(w, "Ah..., Stock invalide", http.StatusBadRequest)
+				return
+			}
+			if img == "" {
+				img = "/static/img/logo/1.png"
+			}
+			newID := 1
+			for _, p := range produits {
+				if p.ID >= newID {
+					newID = p.ID + 1
+				}
+			}
+			newProd := Produit{
+				ID:          newID,
+				Name:        name,
+				Description: desc,
+				Price:       price,
+				OldPrice:    oldPrice,
+				Stock:       stock,
+				Img:         img,
+			}
+			produits = append(produits, newProd)
+			http.Redirect(w, r, "/consult?id="+strconv.Itoa(newID), http.StatusSeeOther)
+			return
+		}
+		http.Error(w, "Méthode non autorisée", http.StatusMethodNotAllowed)
+	})
+
 	chemin, _ := os.Getwd()
 	fmt.Println(chemin)
 	fileserver := http.FileServer(http.Dir(chemin + "/src/assets/"))

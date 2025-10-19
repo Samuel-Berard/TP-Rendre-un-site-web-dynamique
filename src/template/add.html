@@ -1,0 +1,44 @@
+{{define "add"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Ajouter un produit</title>
+</head>
+<body>
+    <header>
+        <img src="/static/img/logo/2.png" alt="Image du logo StreetShop">
+        <nav class="nav">
+            <a href="/">Home</a>
+            <a href="/add">Add</a>
+        </nav>
+    </header>
+    <div class="add">
+        <h1>Ajouter un produit</h1>
+        <form action="/add" method="POST">
+            <label for="name">Nom:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="price">Prix:</label>
+            <input type="number" id="price" name="price" required>
+
+            <label for="old_price">Ancien Prix (si réduction):</label>
+            <input type="number" id="old_price" name="old_price">
+
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" required>
+
+            <label for="img">Image URL:</label>
+            <input type="text" id="img" name="img">
+
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
+</body>
+</html>
+{{end}}
