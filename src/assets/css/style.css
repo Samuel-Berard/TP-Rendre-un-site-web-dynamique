@@ -1,0 +1,133 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    header {
+        background-color: #3d3d3d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        position: relative;
+    }
+
+    .nav {
+        display: flex;
+        gap: 20px;
+        position: absolute;
+        left: 30px;
+        top: 0;
+        height: 100%;
+        align-items: center;
+    }
+
+    .nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 0 10px;
+    }
+
+    header img {
+        height: 60px;
+        width: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    main {
+        max-width: 1200px;
+        margin: 60px auto 0 auto;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        margin-bottom: 30px;
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+    }
+
+.produits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+    .fiche {
+        background: #3d3d3d;
+        color: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        min-height: 180px;
+    }
+
+    .fiche img {
+        max-width: 100px;
+        max-height: 100px;
+        flex-shrink: 0;
+    }
+
+.fiche .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+    .fiche h2 {
+        font-size: 0.95rem;
+        margin: 0 0 8px 0;
+        text-align: left;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .fiche .prices {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .fiche .old-price {
+        font-size: 0.9rem;
+        color: #999;
+        text-decoration: line-through;
+    }
+
+    .fiche .price {
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #fff;
+    }
+
+    .fiche .old-price + .price {
+        color: #e53935;
+    }
+
+    .fiche .consulter {
+        background: #e53935;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 6px 18px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: background 0.2s;
+    }
+    .fiche .consulter:hover {
+        background: #b71c1c;
+    }
